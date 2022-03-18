@@ -1,6 +1,7 @@
 package edu.depauw.csc480.mockdb.sim;
 
 import edu.depauw.csc480.mockdb.db.EntityManager;
+import edu.depauw.csc480.mockdb.model.Course;
 import edu.depauw.csc480.mockdb.model.Department;
 
 public class CreateDepartmentEvent extends AbstractEvent {
@@ -18,15 +19,21 @@ public class CreateDepartmentEvent extends AbstractEvent {
 		Department department = new Department(name);
 		em.persist(department);
 
+		// Create courses
+		em.persist(new Course(name + " for Non-Majors", department));
+		em.persist(new Course("Beginning " + name, department));
+		em.persist(new Course("Intermediate " + name, department));
+		em.persist(new Course("Advanced " + name, department));
+		em.persist(new Course("Special Topics in " + name, department));
+		em.persist(new Course("Senior Project in " + name, department));
+
 		// Hire three faculty members now
 		loop.schedule(new HireFacultyEvent(getTime(), department));
 		loop.schedule(new HireFacultyEvent(getTime(), department));
 		loop.schedule(new HireFacultyEvent(getTime(), department));
 
-		// Create courses
-
-		// now schedule hiring faculty, creating courses, and assigning sections each
-		// year
+		// Schedule assigning sections each year
+		loop.schedule(new AssignSectionsEvent(getTime(), department));
 
 		// Assumptions: each department offers six courses:
 		// Beginning X, Intermediate X, Advanced X, Senior Project
