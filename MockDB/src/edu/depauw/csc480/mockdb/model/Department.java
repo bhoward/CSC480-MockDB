@@ -4,45 +4,47 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Department {
-	private int id;
-	private String name;
-	
-	private Collection<Course> currentCourses;
-	private Collection<Faculty> currentFaculty;
-	private Collection<Section> currentSections; // TODO do we need this one?
-	private Collection<Student> currentMajors;
-	
-	public Department(int id, String name) {
-		this.id = id;
-		this.name = name;
-		
-		this.currentCourses = new ArrayList<>();
-		this.currentFaculty = new ArrayList<>();
-		this.currentSections = new ArrayList<>();
-		this.currentMajors = new ArrayList<>();
-	}
+  private static int nextId = 1;
 
-	public int getId() {
-		return id;
-	}
+  private int id;
+  private String name;
 
-	public String getName() {
-		return name;
-	}
+  private Collection<Course> currentCourses;
+  private Collection<Faculty> currentFaculty;
+  private Collection<Section> currentSections; // TODO do we need this one?
+  private Collection<Student> currentMajors;
 
-	public void addMajor(Student student) {
-		currentMajors.add(student);
-	}
+  public Department(String name) {
+    this.id = nextId++;
+    this.name = name;
 
-	public void addFaculty(Faculty member) {
-		currentFaculty.add(member);
-	}
+    this.currentCourses = new ArrayList<>();
+    this.currentFaculty = new ArrayList<>();
+    this.currentSections = new ArrayList<>();
+    this.currentMajors = new ArrayList<>();
+  }
 
-	public void addCourse(Course course) {
-		currentCourses.add(course);
-	}
+  public int getId() {
+    return id;
+  }
 
-	public void addSection(Section section) {
-		currentSections.add(section);
-	}
+  public String getName() {
+    return name;
+  }
+
+  public void addMajor(Student student) {
+    currentMajors.add(student);
+  }
+
+  public void addFaculty(Faculty member) {
+    currentFaculty.add(member);
+  }
+
+  public void addCourse(Course course) {
+    currentCourses.add(course);
+  }
+
+  public void addSection(Section section) {
+    currentSections.add(section);
+  }
 }

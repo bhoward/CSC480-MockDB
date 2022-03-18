@@ -4,43 +4,45 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Section {
-	private int id;
-	private Course course;
-	private Faculty faculty;
-	private int year;
-	
-	private Collection<Enroll> enrollments;
+  private static int nextId = 1;
 
-	public Section(int id, Course course, Faculty faculty, int year) {
-		this.id = id;
-		this.course = course;
-		this.faculty = faculty;
-		this.year = year;
-		
-		this.enrollments = new ArrayList<>();
-		
-		course.addSection(this);
-		faculty.addSection(this);
-		course.getDepartment().addSection(this);
-	}
+  private int id;
+  private Course course;
+  private Faculty faculty;
+  private int year;
 
-	public int getId() {
-		return id;
-	}
+  private Collection<Enroll> enrollments;
 
-	public Course getCourse() {
-		return course;
-	}
+  public Section(Course course, Faculty faculty, int year) {
+    this.id = nextId++;
+    this.course = course;
+    this.faculty = faculty;
+    this.year = year;
 
-	public Faculty getFaculty() {
-		return faculty;
-	}
+    this.enrollments = new ArrayList<>();
 
-	public int getYear() {
-		return year;
-	}
+    course.addSection(this);
+    faculty.addSection(this);
+    course.getDepartment().addSection(this);
+  }
 
-	public void addEnroll(Enroll enroll) {
-		enrollments.add(enroll);
-	}
+  public int getId() {
+    return id;
+  }
+
+  public Course getCourse() {
+    return course;
+  }
+
+  public Faculty getFaculty() {
+    return faculty;
+  }
+
+  public int getYear() {
+    return year;
+  }
+
+  public void addEnroll(Enroll enroll) {
+    enrollments.add(enroll);
+  }
 }

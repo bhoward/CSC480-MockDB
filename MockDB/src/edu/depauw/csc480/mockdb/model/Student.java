@@ -4,35 +4,37 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Student {
-	private int id;
-	private String name;
-	private Department major;
-	
-	private Collection<Enroll> enrollments;
+  private static int nextId = 1;
 
-	public Student(int id, String name, Department major) {
-		this.id = id;
-		this.name = name;
-		this.major = major;
-		
-		this.enrollments = new ArrayList<>();
-		
-		major.addMajor(this);
-	}
+  private int id;
+  private String name;
+  private Department major;
 
-	public int getId() {
-		return id;
-	}
+  private Collection<Enroll> enrollments;
 
-	public String getName() {
-		return name;
-	}
+  public Student(String name, Department major) {
+    this.id = nextId++;
+    this.name = name;
+    this.major = major;
 
-	public Department getMajor() {
-		return major;
-	}
+    this.enrollments = new ArrayList<>();
 
-	public void addEnroll(Enroll enroll) {
-		enrollments.add(enroll);
-	}
+    major.addMajor(this);
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public Department getMajor() {
+    return major;
+  }
+
+  public void addEnroll(Enroll enroll) {
+    enrollments.add(enroll);
+  }
 }
