@@ -1,6 +1,8 @@
 package edu.depauw.csc480.mockdb.model;
 
-public class Enroll {
+import edu.depauw.csc480.mockdb.db.Entity;
+
+public class Enroll implements Entity {
 	private static int nextId = 1;
 
 	private int id;

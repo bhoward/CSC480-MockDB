@@ -3,7 +3,9 @@ package edu.depauw.csc480.mockdb.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Faculty {
+import edu.depauw.csc480.mockdb.db.Entity;
+
+public class Faculty implements Entity {
 	private String name;
 	private Department department;
 

@@ -3,7 +3,9 @@ package edu.depauw.csc480.mockdb.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Department {
+import edu.depauw.csc480.mockdb.db.Entity;
+
+public class Department implements Entity {
 	private static int nextId = 1;
 
 	private int id;

@@ -1,5 +1,6 @@
 package edu.depauw.csc480.mockdb.sim;
 
+import edu.depauw.csc480.mockdb.db.EntityManager;
 import edu.depauw.csc480.mockdb.model.Department;
 
 public class CreateDepartmentEvent extends AbstractEvent {
@@ -12,7 +13,10 @@ public class CreateDepartmentEvent extends AbstractEvent {
 
 	@Override
 	public void perform(EventLoop loop) {
+		EntityManager em = EntityManager.getInstance();
+		
 		Department department = new Department(name);
+		em.persist(department);
 
 		// Hire three faculty members now
 		loop.schedule(new HireFacultyEvent(getTime(), department));
