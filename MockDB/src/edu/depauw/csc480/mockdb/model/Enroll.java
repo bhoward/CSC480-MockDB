@@ -1,36 +1,36 @@
 package edu.depauw.csc480.mockdb.model;
 
 public class Enroll {
-  private static int nextId = 1;
+	private static int nextId = 1;
 
-  private int id;
-  private Student student;
-  private Section section;
-  private String grade;
+	private int id;
+	private Student student;
+	private Section section;
+	private String grade;
 
-  public Enroll(Student student, Section section, String grade) {
-    this.id = nextId++;
-    this.student = student;
-    this.section = section;
-    this.grade = grade;
+	public Enroll(Student student, Section section, String grade) {
+		this.id = nextId++;
+		this.student = student;
+		this.section = section;
+		this.grade = grade;
 
-    student.addEnroll(this);
-    section.addEnroll(this);
-  }
+		student.addEnroll(this);
+		section.addEnroll(this);
+	}
 
-  public int getId() {
-    return id;
-  }
+	public int getId() {
+		return id;
+	}
 
-  public Student getStudent() {
-    return student;
-  }
+	public Student getStudent() {
+		return student;
+	}
 
-  public Section getSection() {
-    return section;
-  }
+	public Section getSection() {
+		return section;
+	}
 
-  public String getGrade() {
-    return grade;
-  }
+	public String getGrade() {
+		return grade;
+	}
 }

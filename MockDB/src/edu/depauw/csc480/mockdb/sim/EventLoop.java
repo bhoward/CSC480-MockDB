@@ -12,7 +12,7 @@ public class EventLoop {
 	public void schedule(Event event) {
 		events.add(event);
 	}
-	
+
 	public void run() {
 		while (!events.isEmpty()) {
 			Event event = events.remove();
