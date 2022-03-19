@@ -309,4 +309,10 @@ public class Util {
 		return -mean * Math.log(rng.nextDouble());
 	}
 
+	public static int computeYear(double time) {
+		return STARTING_YEAR + (int) time;
+	}
+
+	private static final int STARTING_YEAR = 1970;
+
 }

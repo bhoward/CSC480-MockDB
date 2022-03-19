@@ -5,6 +5,8 @@ import edu.depauw.csc480.mockdb.model.Course;
 import edu.depauw.csc480.mockdb.model.Department;
 
 public class CreateDepartmentEvent extends AbstractEvent implements Event {
+	private static final int STUDENTS_PER_MAJOR = 20;
+
 	private String name;
 
 	public CreateDepartmentEvent(int time, String name) {
@@ -32,13 +34,18 @@ public class CreateDepartmentEvent extends AbstractEvent implements Event {
 		loop.schedule(new HireFacultyEvent(getTime(), department));
 		loop.schedule(new HireFacultyEvent(getTime(), department));
 
+		// Schedule incoming majors each year
+		loop.schedule(new MatriculationEvent(getTime() + 0.25, department, STUDENTS_PER_MAJOR));
+
 		// Schedule assigning sections each year -- do it in the middle of the year
 		// so the faculty roster will be full
 		loop.schedule(new AssignSectionsEvent(getTime() + 0.5, department));
 
 		// Assumptions: each department offers six courses:
-		// Beginning X, Intermediate X, Advanced X, Senior Project
-		// X for Non-Majors, and Special Topics
+		// X for Non-Majors, Beginning X, Intermediate X, Advanced X,
+		// Special Topics in X, and Senior Project in X
+		// Must take in that order (non-majors don't take senior project, majors start
+		// with "Beginning")
 		// Each is taught once per year, with unlimited section size (?)
 		// Each faculty member teaches two courses per year
 		// Each department has three faculty members, who can each teach all courses
@@ -49,6 +56,6 @@ public class CreateDepartmentEvent extends AbstractEvent implements Event {
 		// * pass all five in their major
 		// If they get an F, they may retake that course another year
 		// When faculty are hired, they are also scheduled a retirement event
+		// Each department matriculates a fixed number of students per year
 	}
-
 }

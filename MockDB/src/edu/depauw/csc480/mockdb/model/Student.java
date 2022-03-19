@@ -11,13 +11,15 @@ public class Student implements Entity {
 	private int id;
 	private String name;
 	private Department major;
+	private int graduationYear;
 
 	private Collection<Enroll> enrollments;
 
-	public Student(String name, Department major) {
+	public Student(String name, Department major, int graduationYear) {
 		this.id = nextId++;
 		this.name = name;
 		this.major = major;
+		this.graduationYear = graduationYear;
 
 		this.enrollments = new ArrayList<>();
 
@@ -36,12 +38,16 @@ public class Student implements Entity {
 		return major;
 	}
 
+	public int getGraduationYear() {
+		return graduationYear;
+	}
+
 	public void addEnroll(Enroll enroll) {
 		enrollments.add(enroll);
 	}
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", major=" + major + "]";
+		return "Student [id=" + id + ", name=" + name + ", major=" + major + ", graduationYear=" + graduationYear + "]";
 	}
 }

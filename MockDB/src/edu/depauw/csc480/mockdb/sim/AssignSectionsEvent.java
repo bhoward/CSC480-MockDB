@@ -10,7 +10,6 @@ import edu.depauw.csc480.mockdb.model.Faculty;
 import edu.depauw.csc480.mockdb.model.Section;
 
 public class AssignSectionsEvent extends AbstractEvent implements Event {
-	private static final int STARTING_YEAR = 1970;
 	private Department department;
 
 	public AssignSectionsEvent(double time, Department department) {
@@ -26,7 +25,7 @@ public class AssignSectionsEvent extends AbstractEvent implements Event {
 		List<Course> courses = department.getCourses();
 		
 		// Compute the year from the simulation time
-		int year = STARTING_YEAR + (int) getTime();
+		int year = Util.computeYear(getTime()) + 1;
 		
 		// Assign department faculty to courses randomly
 		Collections.shuffle(courses);
