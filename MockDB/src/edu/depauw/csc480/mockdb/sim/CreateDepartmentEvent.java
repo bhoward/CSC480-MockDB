@@ -4,7 +4,7 @@ import edu.depauw.csc480.mockdb.db.EntityManager;
 import edu.depauw.csc480.mockdb.model.Course;
 import edu.depauw.csc480.mockdb.model.Department;
 
-public class CreateDepartmentEvent extends AbstractEvent {
+public class CreateDepartmentEvent extends AbstractEvent implements Event {
 	private String name;
 
 	public CreateDepartmentEvent(int time, String name) {

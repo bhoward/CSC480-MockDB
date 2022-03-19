@@ -4,7 +4,7 @@ import edu.depauw.csc480.mockdb.db.EntityManager;
 import edu.depauw.csc480.mockdb.model.Department;
 import edu.depauw.csc480.mockdb.model.Faculty;
 
-public class HireFacultyEvent extends AbstractEvent {
+public class HireFacultyEvent extends AbstractEvent implements Event {
 	private Department department;
 
 	public HireFacultyEvent(double time, Department department) {
@@ -19,7 +19,6 @@ public class HireFacultyEvent extends AbstractEvent {
 		String name = Util.randomName();
 		Faculty faculty = new Faculty(name, department);
 		em.persist(faculty);
-		System.out.println("Hire " + faculty + " at time " + getTime());
 
 		// Now schedule their retirement...
 		// Average years of service is 30, with an exponential distribution

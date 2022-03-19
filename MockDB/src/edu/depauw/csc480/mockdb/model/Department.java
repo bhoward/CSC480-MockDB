@@ -2,6 +2,7 @@ package edu.depauw.csc480.mockdb.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import edu.depauw.csc480.mockdb.db.Entity;
 
@@ -59,5 +60,13 @@ public class Department implements Entity {
 	@Override
 	public String toString() {
 		return "Department [id=" + id + ", name=" + name + "]";
+	}
+
+	public List<Faculty> getFaculty() {
+		return new ArrayList<>(currentFaculty);
+	}
+
+	public List<Course> getCourses() {
+		return new ArrayList<>(currentCourses);
 	}
 }
