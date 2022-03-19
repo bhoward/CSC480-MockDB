@@ -20,13 +20,13 @@ public class MatriculationEvent extends AbstractEvent implements Event {
 
 		for (int i = 0; i < numStudents; i++) {
 			String name = Util.randomName();
-			int year = Util.computeYear(getTime()) + 4;
-			em.persist(new Student(name, department, year));
+			int graduationYear = Util.computeYear(getTime()) + 4;
+			Student student = new Student(name, department, graduationYear);
+			em.persist(student);
 			
-			// TODO schedule this student's registration/graduation
-			// need to choose classes (next course for major, and three others,
-			// taking prerequisites and possible failures into account), and
-			// check for ability to graduate -- might need to extend graduation year
+			// Schedule this student's registration/graduation
+			// Happens later in the year, after sections are assigned to faculty
+			loop.schedule(new RegistrationEvent(getTime() + 0.5, student));
 		}
 		
 		// Schedule more students next year

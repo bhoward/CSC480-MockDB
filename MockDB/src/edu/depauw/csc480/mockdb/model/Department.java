@@ -1,20 +1,26 @@
 package edu.depauw.csc480.mockdb.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import edu.depauw.csc480.mockdb.db.Entity;
 
 public class Department implements Entity {
 	private static int nextId = 1;
+	
+	private static List<Department> departments = new ArrayList<>();
+	
+	public static List<Department> getDepartments() {
+		return Collections.unmodifiableList(departments);
+	}
 
 	private int id;
 	private String name;
 
-	private Collection<Course> currentCourses;
-	private Collection<Faculty> currentFaculty;
-	private Collection<Student> currentMajors;
+	private List<Course> currentCourses;
+	private List<Faculty> currentFaculty;
+	private List<Student> currentMajors;
 
 	public Department(String name) {
 		this.id = nextId++;
@@ -23,6 +29,8 @@ public class Department implements Entity {
 		this.currentCourses = new ArrayList<>();
 		this.currentFaculty = new ArrayList<>();
 		this.currentMajors = new ArrayList<>();
+		
+		departments.add(this);
 	}
 
 	public int getId() {
@@ -63,10 +71,10 @@ public class Department implements Entity {
 	}
 
 	public List<Faculty> getFaculty() {
-		return new ArrayList<>(currentFaculty);
+		return Collections.unmodifiableList(currentFaculty);
 	}
 
 	public List<Course> getCourses() {
-		return new ArrayList<>(currentCourses);
+		return Collections.unmodifiableList(currentCourses);
 	}
 }
