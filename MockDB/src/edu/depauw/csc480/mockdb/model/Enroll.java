@@ -35,4 +35,9 @@ public class Enroll implements Entity {
 	public String getGrade() {
 		return grade;
 	}
+
+	@Override
+	public String toString() {
+		return "Enroll [id=" + id + ", student=" + student + ", section=" + section + ", grade=" + grade + "]";
+	}
 }

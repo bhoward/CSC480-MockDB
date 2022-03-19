@@ -47,4 +47,9 @@ public class Section implements Entity {
 	public void addEnroll(Enroll enroll) {
 		enrollments.add(enroll);
 	}
+
+	@Override
+	public String toString() {
+		return "Section [id=" + id + ", course=" + course + ", faculty=" + faculty + ", year=" + year + "]";
+	}
 }

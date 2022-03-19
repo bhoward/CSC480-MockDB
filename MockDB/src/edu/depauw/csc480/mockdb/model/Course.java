@@ -39,4 +39,9 @@ public class Course implements Entity {
 	public void addSection(Section section) {
 		sections.add(section);
 	}
+
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", title=" + title + ", department=" + department + "]";
+	}
 }

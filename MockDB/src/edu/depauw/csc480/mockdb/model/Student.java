@@ -39,4 +39,9 @@ public class Student implements Entity {
 	public void addEnroll(Enroll enroll) {
 		enrollments.add(enroll);
 	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", major=" + major + "]";
+	}
 }

@@ -49,4 +49,9 @@ public class Department implements Entity {
 	public void addSection(Section section) {
 		currentSections.add(section);
 	}
+
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", name=" + name + "]";
+	}
 }
