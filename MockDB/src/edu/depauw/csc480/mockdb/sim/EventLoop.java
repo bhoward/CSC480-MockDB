@@ -13,9 +13,12 @@ public class EventLoop {
 		events.add(event);
 	}
 
-	public void run() {
+	public void runUntil(int endTime) {
 		while (!events.isEmpty()) {
 			Event event = events.remove();
+			if (event.getTime() > endTime) {
+				break;
+			}
 			event.perform(this);
 		}
 	}

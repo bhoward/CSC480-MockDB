@@ -1,5 +1,6 @@
 package edu.depauw.csc480.mockdb.db;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -18,5 +19,11 @@ public class EntityManager {
 
 	public static EntityManager getInstance() {
 		return INSTANCE;
+	}
+	
+	public void dump(PrintStream out) {
+		for (Entity entity : entities) {
+			out.println(entity);
+		}
 	}
 }
