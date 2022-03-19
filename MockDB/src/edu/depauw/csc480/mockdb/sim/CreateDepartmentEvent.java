@@ -15,7 +15,7 @@ public class CreateDepartmentEvent extends AbstractEvent {
 	@Override
 	public void perform(EventLoop loop) {
 		EntityManager em = EntityManager.getInstance();
-		
+
 		Department department = new Department(name);
 		em.persist(department);
 
@@ -32,8 +32,9 @@ public class CreateDepartmentEvent extends AbstractEvent {
 		loop.schedule(new HireFacultyEvent(getTime(), department));
 		loop.schedule(new HireFacultyEvent(getTime(), department));
 
-		// Schedule assigning sections each year
-		loop.schedule(new AssignSectionsEvent(getTime(), department));
+		// Schedule assigning sections each year -- do it in the middle of the year
+		// so the faculty roster will be full
+		loop.schedule(new AssignSectionsEvent(getTime() + 0.5, department));
 
 		// Assumptions: each department offers six courses:
 		// Beginning X, Intermediate X, Advanced X, Senior Project

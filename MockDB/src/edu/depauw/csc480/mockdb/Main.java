@@ -13,7 +13,7 @@ public class Main {
 		loop.schedule(new CreateDepartmentEvent(0, "English"));
 		loop.schedule(new CreateDepartmentEvent(20, "Computer Science"));
 		
-		loop.runUntil(25);
+		loop.runUntil(50);
 		
 		EntityManager em = EntityManager.getInstance();
 		em.dump(System.out);

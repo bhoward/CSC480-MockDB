@@ -13,7 +13,6 @@ public class Department implements Entity {
 
 	private Collection<Course> currentCourses;
 	private Collection<Faculty> currentFaculty;
-	private Collection<Section> currentSections; // TODO do we need this one?
 	private Collection<Student> currentMajors;
 
 	public Department(String name) {
@@ -22,7 +21,6 @@ public class Department implements Entity {
 
 		this.currentCourses = new ArrayList<>();
 		this.currentFaculty = new ArrayList<>();
-		this.currentSections = new ArrayList<>();
 		this.currentMajors = new ArrayList<>();
 	}
 
@@ -38,16 +36,24 @@ public class Department implements Entity {
 		currentMajors.add(student);
 	}
 
+	public void removeMajor(Student student) {
+		currentMajors.remove(student);
+	}
+
 	public void addFaculty(Faculty member) {
 		currentFaculty.add(member);
+	}
+
+	public void removeFaculty(Faculty member) {
+		currentFaculty.remove(member);
 	}
 
 	public void addCourse(Course course) {
 		currentCourses.add(course);
 	}
 
-	public void addSection(Section section) {
-		currentSections.add(section);
+	public void removeCourse(Course course) {
+		currentCourses.remove(course);
 	}
 
 	@Override

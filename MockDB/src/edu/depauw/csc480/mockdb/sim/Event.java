@@ -1,7 +1,7 @@
 package edu.depauw.csc480.mockdb.sim;
 
 public interface Event {
-	int getTime();
+	double getTime();
 
 	void perform(EventLoop loop);
 }

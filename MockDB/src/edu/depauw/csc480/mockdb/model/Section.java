@@ -25,7 +25,6 @@ public class Section implements Entity {
 
 		course.addSection(this);
 		faculty.addSection(this);
-		course.getDepartment().addSection(this);
 	}
 
 	public int getId() {

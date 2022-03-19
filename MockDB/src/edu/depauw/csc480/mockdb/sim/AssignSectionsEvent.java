@@ -5,7 +5,7 @@ import edu.depauw.csc480.mockdb.model.Department;
 public class AssignSectionsEvent extends AbstractEvent implements Event {
 	private Department department;
 
-	public AssignSectionsEvent(int time, Department department) {
+	public AssignSectionsEvent(double time, Department department) {
 		super(time);
 		this.department = department;
 	}
