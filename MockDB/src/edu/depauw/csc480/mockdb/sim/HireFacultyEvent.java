@@ -21,9 +21,9 @@ public class HireFacultyEvent extends AbstractEvent implements Event {
 		em.persist(faculty);
 
 		// Now schedule their retirement...
-		// Average years of service is 30, with an exponential distribution
+		// Average years of service is given, with an exponential distribution
 		// Round to an int so that retirements happen at the end of a year
-		double retirement = getTime() + (int) Util.randomExp(30);
+		double retirement = getTime() + (int) Util.randomExp(Config.MEAN_FACULTY_YEARS);
 		loop.schedule(new RetireFacultyEvent(retirement, faculty));
 	}
 

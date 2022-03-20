@@ -8,9 +8,9 @@ import edu.depauw.csc480.mockdb.db.Entity;
 
 public class Department implements Entity {
 	private static int nextId = 1;
-	
+
 	private static List<Department> departments = new ArrayList<>();
-	
+
 	public static List<Department> getDepartments() {
 		return Collections.unmodifiableList(departments);
 	}
@@ -21,6 +21,10 @@ public class Department implements Entity {
 	private List<Course> currentCourses;
 	private List<Faculty> currentFaculty;
 	private List<Student> currentMajors;
+	private List<Section> currentSections;
+	// TODO evaluate how many of these reverse collections are needed across all the
+	// model classes -- for example, what is the best way to get the current sections
+	// being offered by a department?
 
 	public Department(String name) {
 		this.id = nextId++;
@@ -29,7 +33,8 @@ public class Department implements Entity {
 		this.currentCourses = new ArrayList<>();
 		this.currentFaculty = new ArrayList<>();
 		this.currentMajors = new ArrayList<>();
-		
+		this.currentSections = new ArrayList<>();
+
 		departments.add(this);
 	}
 
@@ -64,6 +69,14 @@ public class Department implements Entity {
 	public void removeCourse(Course course) {
 		currentCourses.remove(course);
 	}
+	
+	public void addSection(Section section) {
+		currentSections.add(section);
+	}
+	
+	public void clearCurrentSections() {
+		currentSections.clear();
+	}
 
 	@Override
 	public String toString() {
@@ -76,5 +89,9 @@ public class Department implements Entity {
 
 	public List<Course> getCourses() {
 		return Collections.unmodifiableList(currentCourses);
+	}
+	
+	public List<Section> getSections() {
+		return Collections.unmodifiableList(currentSections);
 	}
 }

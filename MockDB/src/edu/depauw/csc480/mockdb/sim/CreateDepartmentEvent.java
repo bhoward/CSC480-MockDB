@@ -5,8 +5,6 @@ import edu.depauw.csc480.mockdb.model.Course;
 import edu.depauw.csc480.mockdb.model.Department;
 
 public class CreateDepartmentEvent extends AbstractEvent implements Event {
-	private static final int STUDENTS_PER_MAJOR = 20;
-
 	private String name;
 
 	public CreateDepartmentEvent(int time, String name) {
@@ -21,13 +19,7 @@ public class CreateDepartmentEvent extends AbstractEvent implements Event {
 		Department department = new Department(name);
 		em.persist(department);
 
-		// Create courses
-		em.persist(new Course(name + " for Non-Majors", department));
-		em.persist(new Course("Beginning " + name, department));
-		em.persist(new Course("Intermediate " + name, department));
-		em.persist(new Course("Advanced " + name, department));
-		em.persist(new Course("Special Topics in " + name, department));
-		em.persist(new Course("Senior Project in " + name, department));
+		createCourses(department, em);
 
 		// Hire three faculty members now
 		loop.schedule(new HireFacultyEvent(getTime(), department));
@@ -35,7 +27,7 @@ public class CreateDepartmentEvent extends AbstractEvent implements Event {
 		loop.schedule(new HireFacultyEvent(getTime(), department));
 
 		// Schedule incoming majors each year
-		loop.schedule(new MatriculationEvent(getTime() + 0.25, department, STUDENTS_PER_MAJOR));
+		loop.schedule(new MatriculationEvent(getTime() + 0.25, department, Config.STUDENTS_PER_MAJOR));
 
 		// Schedule assigning sections each year -- do it in the middle of the year
 		// so the faculty roster will be full
@@ -46,6 +38,7 @@ public class CreateDepartmentEvent extends AbstractEvent implements Event {
 		// Special Topics in X, and Senior Project in X
 		// Must take in that order (non-majors don't take senior project, majors start
 		// with "Beginning")
+		// Special Topics and Senior Project are both taken senior year (typically)
 		// Each is taught once per year, with unlimited section size (?)
 		// Each faculty member teaches two courses per year
 		// Each department has three faculty members, who can each teach all courses
@@ -57,5 +50,20 @@ public class CreateDepartmentEvent extends AbstractEvent implements Event {
 		// If they get an F, they may retake that course another year
 		// When faculty are hired, they are also scheduled a retirement event
 		// Each department matriculates a fixed number of students per year
+	}
+
+	private void createCourses(Department department, EntityManager em) {
+		Course x001 = new Course(name + " for Non-Majors", department, Course.NON_MAJOR);
+		em.persist(x001);
+		Course x101 = new Course("Beginning " + name, department, Course.ANY, x001);
+		em.persist(x101);
+		Course x201 = new Course("Intermediate " + name, department, Course.ANY, x101);
+		em.persist(x201);
+		Course x301 = new Course("Advanced " + name, department, Course.ANY, x201);
+		em.persist(x301);
+		Course x401 = new Course("Special Topics in " + name, department, Course.ANY, x301);
+		em.persist(x401);
+		Course x499 = new Course("Senior Project in " + name, department, Course.ANY, x301);
+		em.persist(x499);
 	}
 }

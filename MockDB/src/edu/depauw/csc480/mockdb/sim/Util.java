@@ -1,5 +1,6 @@
 package edu.depauw.csc480.mockdb.sim;
 
+import java.util.List;
 import java.util.Random;
 
 public class Util {
@@ -310,9 +311,27 @@ public class Util {
 	}
 
 	public static int computeYear(double time) {
-		return STARTING_YEAR + (int) time;
+		return Config.STARTING_YEAR + (int) time;
 	}
 
-	private static final int STARTING_YEAR = 1970;
+	public static <T> T selectRandom(List<T> list) {
+		int i = rng.nextInt(list.size());
+		return list.get(i);
+	}
 
+	public static String randomGrade() {
+		// A fairly classic "Bell curve" grading scheme
+		double score = rng.nextGaussian();
+		if (score >= 1.5) {
+			return "A";
+		} else if (score >= 0.5) {
+			return "B";
+		} else if (score >= -0.5) {
+			return "C";
+		} else if (score >= -1.5) {
+			return "D";
+		} else {
+			return "F";
+		}
+	}
 }

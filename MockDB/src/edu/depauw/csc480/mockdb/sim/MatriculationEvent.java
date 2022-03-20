@@ -20,7 +20,7 @@ public class MatriculationEvent extends AbstractEvent implements Event {
 
 		for (int i = 0; i < numStudents; i++) {
 			String name = Util.randomName();
-			int graduationYear = Util.computeYear(getTime()) + 4;
+			int graduationYear = Util.computeYear(getTime()) + Config.EXPECTED_YEARS_TO_GRADUATION;
 			Student student = new Student(name, department, graduationYear);
 			em.persist(student);
 			

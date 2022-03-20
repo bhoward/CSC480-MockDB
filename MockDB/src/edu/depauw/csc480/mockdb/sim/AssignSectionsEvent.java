@@ -1,5 +1,6 @@
 package edu.depauw.csc480.mockdb.sim;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,7 +23,9 @@ public class AssignSectionsEvent extends AbstractEvent implements Event {
 		EntityManager em = EntityManager.getInstance();
 		
 		List<Faculty> faculty = department.getFaculty();
-		List<Course> courses = department.getCourses();
+		List<Course> courses = new ArrayList<>(department.getCourses());
+		
+		department.clearCurrentSections();
 		
 		// Compute the year from the simulation time
 		int year = Util.computeYear(getTime()) + 1;
@@ -31,7 +34,9 @@ public class AssignSectionsEvent extends AbstractEvent implements Event {
 		Collections.shuffle(courses);
 		for (int i = 0; i < courses.size(); i++) {
 			int j = i % faculty.size();
-			em.persist(new Section(courses.get(i), faculty.get(j), year));
+			Section section = new Section(courses.get(i), faculty.get(j), year);
+			department.addSection(section);
+			em.persist(section);
 		}
 
 		// Schedule this again for next year
