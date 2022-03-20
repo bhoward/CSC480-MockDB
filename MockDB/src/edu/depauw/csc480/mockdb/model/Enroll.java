@@ -1,5 +1,7 @@
 package edu.depauw.csc480.mockdb.model;
 
+import java.io.PrintStream;
+
 import edu.depauw.csc480.mockdb.db.Entity;
 
 public class Enroll implements Entity {
@@ -39,5 +41,11 @@ public class Enroll implements Entity {
 	@Override
 	public String toString() {
 		return "Enroll [id=" + id + ", student=" + student.getName() + ", section=" + section + ", grade=" + grade + "]";
+	}
+
+	@Override
+	public void writeCSV(PrintStream out) {
+		// EId, StudentId, SectionId, Grade
+		out.println(id + "," + student.getId() + "," + section.getId() + "," + grade);
 	}
 }

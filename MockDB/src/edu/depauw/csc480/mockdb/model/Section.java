@@ -1,5 +1,6 @@
 package edu.depauw.csc480.mockdb.model;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -50,5 +51,11 @@ public class Section implements Entity {
 	@Override
 	public String toString() {
 		return "Section [id=" + id + ", course=" + course.getTitle() + ", faculty=" + faculty.getName() + ", year=" + year + "]";
+	}
+
+	@Override
+	public void writeCSV(PrintStream out) {
+		// SectId, CourseId, Prof, YearOffered
+		out.println(id + "," + course.getId() + "," + faculty.getName() + "," + year);
 	}
 }

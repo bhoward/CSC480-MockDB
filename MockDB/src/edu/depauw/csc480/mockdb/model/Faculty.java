@@ -1,5 +1,6 @@
 package edu.depauw.csc480.mockdb.model;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -35,5 +36,10 @@ public class Faculty implements Entity {
 	@Override
 	public String toString() {
 		return "Faculty [name=" + name + ", department=" + department.getName() + "]";
+	}
+
+	@Override
+	public void writeCSV(PrintStream out) {
+		// Do nothing -- not stored in a table
 	}
 }

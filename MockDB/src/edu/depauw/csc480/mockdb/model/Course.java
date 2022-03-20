@@ -1,5 +1,6 @@
 package edu.depauw.csc480.mockdb.model;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -66,5 +67,11 @@ public class Course implements Entity {
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", title=" + title + ", department=" + department.getName() + "]";
+	}
+
+	@Override
+	public void writeCSV(PrintStream out) {
+		// CId, Title, DeptId
+		out.println(id + "," + title + "," + department.getId());
 	}
 }

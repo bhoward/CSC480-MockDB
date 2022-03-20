@@ -1,5 +1,6 @@
 package edu.depauw.csc480.mockdb.model;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -93,5 +94,11 @@ public class Department implements Entity {
 	
 	public List<Section> getSections() {
 		return Collections.unmodifiableList(currentSections);
+	}
+
+	@Override
+	public void writeCSV(PrintStream out) {
+		// DId, DName
+		out.println(id + "," + name);
 	}
 }
