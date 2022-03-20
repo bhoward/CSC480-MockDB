@@ -27,8 +27,37 @@ public class Config {
 		DEPARTMENT_START.put("Mathematics", 0);
 		DEPARTMENT_START.put("History", 0);
 		DEPARTMENT_START.put("Philosophy", 0);
+		DEPARTMENT_START.put("Religion", 0);
+		DEPARTMENT_START.put("Music", 0);
+		DEPARTMENT_START.put("Art History", 0);
+		DEPARTMENT_START.put("Greek", 0);
+		DEPARTMENT_START.put("Latin", 0);
+		DEPARTMENT_START.put("Chemistry", 0);
+		DEPARTMENT_START.put("Biology", 0);
 		DEPARTMENT_START.put("Physics", 0);
+		DEPARTMENT_START.put("Geology", 5);
+		DEPARTMENT_START.put("Geography", 5);
+		DEPARTMENT_START.put("Psychology", 5);
+		DEPARTMENT_START.put("French", 10);
+		DEPARTMENT_START.put("Spanish", 10);
+		DEPARTMENT_START.put("German", 10);
+		DEPARTMENT_START.put("Italian", 10);
+		DEPARTMENT_START.put("Theatre", 15);
+		DEPARTMENT_START.put("Art", 15);
+		DEPARTMENT_START.put("Economics", 15);
+		DEPARTMENT_START.put("Education", 15);
+		DEPARTMENT_START.put("Political Science", 15);
 		DEPARTMENT_START.put("Computer Science", 20);
+		DEPARTMENT_START.put("Japanese", 20);
+		DEPARTMENT_START.put("Chinese", 20);
+		DEPARTMENT_START.put("Anthropology", 20);
+		DEPARTMENT_START.put("Sociology", 20);
+		DEPARTMENT_START.put("Communication", 20);		
+		DEPARTMENT_START.put("Biochemistry", 25);		
+		DEPARTMENT_START.put("Kinesiology", 25);		
+		DEPARTMENT_START.put("Neuroscience", 25);		
+		DEPARTMENT_START.put("Global Health", 25);		
+		DEPARTMENT_START.put("Film Studies", 25);		
 	}
 	
 	public static void createCourses(Department department, EntityManager em) {
