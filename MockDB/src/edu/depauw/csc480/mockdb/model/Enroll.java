@@ -38,6 +38,6 @@ public class Enroll implements Entity {
 
 	@Override
 	public String toString() {
-		return "Enroll [id=" + id + ", student=" + student + ", section=" + section + ", grade=" + grade + "]";
+		return "Enroll [id=" + id + ", student=" + student.getName() + ", section=" + section + ", grade=" + grade + "]";
 	}
 }

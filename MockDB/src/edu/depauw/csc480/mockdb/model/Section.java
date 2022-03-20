@@ -49,6 +49,6 @@ public class Section implements Entity {
 
 	@Override
 	public String toString() {
-		return "Section [id=" + id + ", course=" + course + ", faculty=" + faculty + ", year=" + year + "]";
+		return "Section [id=" + id + ", course=" + course.getTitle() + ", faculty=" + faculty.getName() + ", year=" + year + "]";
 	}
 }

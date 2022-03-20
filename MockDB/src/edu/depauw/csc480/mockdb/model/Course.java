@@ -65,6 +65,6 @@ public class Course implements Entity {
 
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", title=" + title + ", department=" + department + "]";
+		return "Course [id=" + id + ", title=" + title + ", department=" + department.getName() + "]";
 	}
 }

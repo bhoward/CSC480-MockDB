@@ -61,9 +61,9 @@ public class CreateDepartmentEvent extends AbstractEvent implements Event {
 		em.persist(x201);
 		Course x301 = new Course("Advanced " + name, department, Course.ANY, x201);
 		em.persist(x301);
-		Course x401 = new Course("Special Topics in " + name, department, Course.ANY, x301);
+		Course x401 = new Course("Special Topics in " + name, department, Course.MAJOR, x301);
 		em.persist(x401);
-		Course x499 = new Course("Senior Project in " + name, department, Course.ANY, x301);
+		Course x499 = new Course("Senior Project in " + name, department, Course.MAJOR, x301);
 		em.persist(x499);
 	}
 }

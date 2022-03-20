@@ -2,6 +2,7 @@ package edu.depauw.csc480.mockdb.sim;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import edu.depauw.csc480.mockdb.db.EntityManager;
@@ -26,7 +27,6 @@ public class RegistrationEvent extends AbstractEvent implements Event {
 		if (student.canGraduate()) {
 			student.setGraduationYear(Util.computeYear(getTime()));
 			student.getMajor().removeMajor(student);
-			System.out.println(student);
 			return;
 		}
 
@@ -44,19 +44,25 @@ public class RegistrationEvent extends AbstractEvent implements Event {
 		// Choose additional courses not in the major:
 		// Pick random non-major departments;
 		// look for next course in sequence (if any)
-		// until four courses total are registered
-		List<Department> departments = Department.getDepartments();
-		while (schedule.size() < Config.COURSES_PER_YEAR) {
-			Department department = Util.selectRandom(departments);
+		// until four courses total are registered or there are no more available
+		// courses
+		List<Department> departments = new ArrayList<>(Department.getDepartments());
+		Collections.shuffle(departments);
+		for (Department department : departments) {
+			if (department.equals(major)) {
+				continue;
+			}
+
 			for (Section section : department.getSections()) {
-				if (schedule.contains(section)) {
-					continue; // Don't choose the same course twice
-				}
 				Course course = section.getCourse();
 				if (student.canTake(course)) {
 					schedule.add(section);
 					break; // Only choose one from this department
 				}
+			}
+
+			if (schedule.size() == Config.COURSES_PER_YEAR) {
+				break;
 			}
 		}
 

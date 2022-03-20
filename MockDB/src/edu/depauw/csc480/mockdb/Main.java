@@ -18,6 +18,6 @@ public class Main {
 		loop.runUntil(Config.SIMULATION_YEARS);
 		
 		EntityManager em = EntityManager.getInstance();
-//		em.dump(System.out);
+		em.dump(System.out);
 	}
 }

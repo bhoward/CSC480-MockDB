@@ -34,6 +34,6 @@ public class Faculty implements Entity {
 
 	@Override
 	public String toString() {
-		return "Faculty [name=" + name + ", department=" + department + "]";
+		return "Faculty [name=" + name + ", department=" + department.getName() + "]";
 	}
 }

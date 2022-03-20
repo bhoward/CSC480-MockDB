@@ -88,6 +88,6 @@ public class Student implements Entity {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", major=" + major + ", graduationYear=" + graduationYear + "]";
+		return "Student [id=" + id + ", name=" + name + ", major=" + major.getName() + ", graduationYear=" + graduationYear + "]";
 	}
 }
