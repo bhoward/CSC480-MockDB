@@ -44,7 +44,10 @@ public class Main {
 			outputs.put(Section.class, section);
 			outputs.put(Student.class, student);
 
-			em.writeCSV(outputs);
+			int records = em.writeCSV(outputs);
+			System.out.println(records + " records written");
 		}
+		
+		System.out.println("Done");
 	}
 }

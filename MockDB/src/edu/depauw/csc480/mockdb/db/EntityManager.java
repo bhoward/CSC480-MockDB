@@ -28,14 +28,19 @@ public class EntityManager {
 		}
 	}
 
-	public void writeCSV(Map<Class<? extends Entity>, PrintStream> outputs) {
+	public int writeCSV(Map<Class<? extends Entity>, PrintStream> outputs) {
+		int records = 0;
+		
 		for (Entity entity : entities) {
 			Class<? extends Entity> clazz = entity.getClass();
 			
 			if (outputs.containsKey(clazz)) {
 				PrintStream out = outputs.get(clazz);
 				entity.writeCSV(out);
+				records++;
 			}
 		}
+		
+		return records;
 	}
 }
