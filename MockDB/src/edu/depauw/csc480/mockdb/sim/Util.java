@@ -1,8 +1,13 @@
 package edu.depauw.csc480.mockdb.sim;
 
-import java.util.List;
 import java.util.Random;
 
+/**
+ * A collection of static utility functions for use in the university
+ * simulation.
+ * 
+ * @author bhoward
+ */
 public class Util {
 	private static Random rng = new Random();
 
@@ -300,27 +305,42 @@ public class Util {
 			"Davies", "Barajas", "Shea", "Osborn", "Bright", "Cuevas", "Bolton", "Murillo", "Lutz", "Duarte", "Kidd",
 			"Key", "Cooke" };
 
+	/**
+	 * @return a randomly generated name consisting of a given and family name.
+	 */
 	public static String randomName() {
 		String givenName = GIVEN_NAMES[rng.nextInt(GIVEN_NAMES.length)];
 		String familyName = FAMILY_NAMES[rng.nextInt(FAMILY_NAMES.length)];
 		return givenName + " " + familyName;
 	}
 
+	/**
+	 * Return a random number generated according to an exponential distribution
+	 * with the given mean.
+	 * 
+	 * @param mean
+	 * @return
+	 */
 	public static double randomExp(double mean) {
 		return -mean * Math.log(rng.nextDouble());
 	}
 
+	/**
+	 * Compute the year corresponding to the given simulation time.
+	 * 
+	 * @param time
+	 * @return
+	 */
 	public static int computeYear(double time) {
 		return Config.STARTING_YEAR + (int) time;
 	}
 
-	public static <T> T selectRandom(List<T> list) {
-		int i = rng.nextInt(list.size());
-		return list.get(i);
-	}
-
+	/**
+	 * Compute a random grade according to a classic "Bell curve" grading scheme.
+	 * 
+	 * @return a grade "A" through "F"
+	 */
 	public static String randomGrade() {
-		// A fairly classic "Bell curve" grading scheme
 		double score = rng.nextGaussian();
 		if (score >= 1.5) {
 			return "A";

@@ -12,9 +12,22 @@ import edu.depauw.csc480.mockdb.model.Enroll;
 import edu.depauw.csc480.mockdb.model.Section;
 import edu.depauw.csc480.mockdb.model.Student;
 
+/**
+ * A simulation Event that occurs once per year for each active Student, in
+ * which they select a schedule of course Sections to be taken in the current
+ * year.
+ * 
+ * @author bhoward
+ */
 public class RegistrationEvent extends AbstractEvent implements Event {
 	private Student student;
 
+	/**
+	 * Construct a RegistrationEvent for the given time and Student.
+	 * 
+	 * @param time
+	 * @param student
+	 */
 	public RegistrationEvent(double time, Student student) {
 		super(time);
 		this.student = student;
@@ -26,7 +39,6 @@ public class RegistrationEvent extends AbstractEvent implements Event {
 
 		if (student.canGraduate()) {
 			student.setGraduationYear(Util.computeYear(getTime()));
-			student.getMajor().removeMajor(student);
 			return;
 		}
 

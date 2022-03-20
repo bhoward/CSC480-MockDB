@@ -7,19 +7,28 @@ import edu.depauw.csc480.mockdb.db.EntityManager;
 import edu.depauw.csc480.mockdb.model.Course;
 import edu.depauw.csc480.mockdb.model.Department;
 
+/**
+ * Configuration information for the university simulation.
+ * 
+ * @author bhoward
+ */
 public class Config {
 	public static final int SIMULATION_YEARS = 50;
 	public static final int STARTING_YEAR = 1970;
-	
+
 	public static final int COURSES_PER_YEAR = 4;
 	public static final int EXPECTED_YEARS_TO_GRADUATION = 4;
 	public static final int GRADUATION_CREDITS = 15;
 	public static final int GRADUATION_MAJOR_CREDITS = 5;
-	
+
 	public static final int STUDENTS_PER_MAJOR = 20;
 	public static final int FACULTY_PER_MAJOR = 3;
 	public static final int MEAN_FACULTY_YEARS = 30;
 
+	/**
+	 * An association of Department names with the simulation year in which they are
+	 * to be created.
+	 */
 	public static final Map<String, Integer> DEPARTMENT_START;
 	static {
 		DEPARTMENT_START = new HashMap<>();
@@ -52,17 +61,25 @@ public class Config {
 		DEPARTMENT_START.put("Chinese", 20);
 		DEPARTMENT_START.put("Anthropology", 20);
 		DEPARTMENT_START.put("Sociology", 20);
-		DEPARTMENT_START.put("Communication", 20);		
-		DEPARTMENT_START.put("Biochemistry", 25);		
-		DEPARTMENT_START.put("Kinesiology", 25);		
-		DEPARTMENT_START.put("Neuroscience", 25);		
-		DEPARTMENT_START.put("Global Health", 25);		
-		DEPARTMENT_START.put("Film Studies", 25);		
+		DEPARTMENT_START.put("Communication", 20);
+		DEPARTMENT_START.put("Biochemistry", 25);
+		DEPARTMENT_START.put("Kinesiology", 25);
+		DEPARTMENT_START.put("Neuroscience", 25);
+		DEPARTMENT_START.put("Global Health", 25);
+		DEPARTMENT_START.put("Film Studies", 25);
 	}
-	
+
+	/**
+	 * Create a list of courses for the given Department (and persist them in the
+	 * EntityManager). Currently creates the same six very generically-named courses
+	 * for each department, with the same prerequisite structure.
+	 * 
+	 * @param department
+	 * @param em
+	 */
 	public static void createCourses(Department department, EntityManager em) {
 		String name = department.getName();
-		
+
 		Course x001 = new Course(name + " for Non-Majors", department, Course.NON_MAJOR);
 		em.persist(x001);
 		Course x101 = new Course("Beginning " + name, department, Course.ANY, x001);

@@ -17,6 +17,12 @@ import edu.depauw.csc480.mockdb.sim.Config;
 import edu.depauw.csc480.mockdb.sim.CreateDepartmentEvent;
 import edu.depauw.csc480.mockdb.sim.EventLoop;
 
+/**
+ * Main class to run the university simulation and generate CSV files to be
+ * imported into a database.
+ * 
+ * @author bhoward
+ */
 public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		EventLoop loop = new EventLoop();
@@ -47,7 +53,7 @@ public class Main {
 			int records = em.writeCSV(outputs);
 			System.out.println(records + " records written");
 		}
-		
+
 		System.out.println("Done");
 	}
 }

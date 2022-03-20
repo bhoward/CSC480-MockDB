@@ -1,22 +1,28 @@
 package edu.depauw.csc480.mockdb.model;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import edu.depauw.csc480.mockdb.db.Entity;
 
+/**
+ * Model object representing a faculty member at a university. Each faculty
+ * member has a name and a home Department.
+ * 
+ * @author bhoward
+ */
 public class Faculty implements Entity {
 	private String name;
 	private Department department;
 
-	private Collection<Section> sections;
-
+	/**
+	 * Construct a faculty member with the given name and home Department.
+	 * 
+	 * @param name
+	 * @param department
+	 */
 	public Faculty(String name, Department department) {
 		this.name = name;
 		this.department = department;
-
-		this.sections = new ArrayList<>();
 
 		department.addFaculty(this);
 	}
@@ -27,10 +33,6 @@ public class Faculty implements Entity {
 
 	public Department getDepartment() {
 		return department;
-	}
-
-	public void addSection(Section section) {
-		sections.add(section);
 	}
 
 	@Override

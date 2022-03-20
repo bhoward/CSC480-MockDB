@@ -1,14 +1,19 @@
 package edu.depauw.csc480.mockdb.model;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import edu.depauw.csc480.mockdb.db.Entity;
 
+/**
+ * Model object representing a course taught at a university. Each course has a
+ * title and an offering Department, as well as a flag indicating which students
+ * may take the course (majors, non-majors, or any) and a list of prerequisites.
+ * 
+ * @author bhoward
+ */
 public class Course implements Entity {
 	public static final int NON_MAJOR = 0x01;
 	public static final int MAJOR = 0x02;
@@ -22,16 +27,21 @@ public class Course implements Entity {
 	private int who;
 	private List<Course> prereqs;
 
-	private Collection<Section> sections;
-
+	/**
+	 * Construct a Course given a title, Department, eligibility flag, and zero or
+	 * more prerequisite Courses. A unique id number is automatically assigned.
+	 * 
+	 * @param title
+	 * @param department
+	 * @param who
+	 * @param prereqs
+	 */
 	public Course(String title, Department department, int who, Course... prereqs) {
 		this.id = nextId++;
 		this.title = title;
 		this.department = department;
 		this.who = who;
 		this.prereqs = Arrays.asList(prereqs);
-
-		this.sections = new ArrayList<>();
 
 		department.addCourse(this);
 	}
@@ -47,21 +57,25 @@ public class Course implements Entity {
 	public Department getDepartment() {
 		return department;
 	}
-	
+
 	public List<Course> getPrereqs() {
 		return Collections.unmodifiableList(prereqs);
 	}
 
+	/**
+	 * Check whether a student with the given major department is allowed to
+	 * register for this course. This only considers the eligibility flag; it does
+	 * not check prerequisites.
+	 * 
+	 * @param major The student's major Department
+	 * @return true if the student is eligible
+	 */
 	public boolean mayRegister(Department major) {
 		if (major.equals(department)) {
 			return (who & MAJOR) != 0;
 		} else {
 			return (who & NON_MAJOR) != 0;
 		}
-	}
-	
-	public void addSection(Section section) {
-		sections.add(section);
 	}
 
 	@Override

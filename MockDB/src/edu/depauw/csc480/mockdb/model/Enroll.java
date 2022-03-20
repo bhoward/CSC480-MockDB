@@ -4,6 +4,13 @@ import java.io.PrintStream;
 
 import edu.depauw.csc480.mockdb.db.Entity;
 
+/**
+ * Model object representing one enrollment record at a university. An
+ * enrollment tracks an instance of a Student registering for a Section, and
+ * also records the grade earned.
+ * 
+ * @author bhoward
+ */
 public class Enroll implements Entity {
 	private static int nextId = 1;
 
@@ -12,6 +19,14 @@ public class Enroll implements Entity {
 	private Section section;
 	private String grade;
 
+	/**
+	 * Construct an enrollment record given a Student, Section, and grade ("A"
+	 * through "F"). A unique id number is automatically assigned.
+	 * 
+	 * @param student
+	 * @param section
+	 * @param grade
+	 */
 	public Enroll(Student student, Section section, String grade) {
 		this.id = nextId++;
 		this.student = student;
@@ -19,7 +34,6 @@ public class Enroll implements Entity {
 		this.grade = grade;
 
 		student.addEnroll(this);
-		section.addEnroll(this);
 	}
 
 	public int getId() {
@@ -40,7 +54,8 @@ public class Enroll implements Entity {
 
 	@Override
 	public String toString() {
-		return "Enroll [id=" + id + ", student=" + student.getName() + ", section=" + section + ", grade=" + grade + "]";
+		return "Enroll [id=" + id + ", student=" + student.getName() + ", section=" + section + ", grade=" + grade
+				+ "]";
 	}
 
 	@Override

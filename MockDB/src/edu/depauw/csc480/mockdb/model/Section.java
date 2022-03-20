@@ -1,11 +1,16 @@
 package edu.depauw.csc480.mockdb.model;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import edu.depauw.csc480.mockdb.db.Entity;
 
+/**
+ * Model object representing a single offering of a course at a university. Each
+ * Section keeps track of its Course and the Faculty member teaching it, as well
+ * as the year in which it is offered.
+ * 
+ * @author bhoward
+ */
 public class Section implements Entity {
 	private static int nextId = 1;
 
@@ -14,18 +19,19 @@ public class Section implements Entity {
 	private Faculty faculty;
 	private int year;
 
-	private Collection<Enroll> enrollments;
-
+	/**
+	 * Construct a Section for the given Course, Faculty, and year. A unique id
+	 * number is automatically assigned.
+	 * 
+	 * @param course
+	 * @param faculty
+	 * @param year
+	 */
 	public Section(Course course, Faculty faculty, int year) {
 		this.id = nextId++;
 		this.course = course;
 		this.faculty = faculty;
 		this.year = year;
-
-		this.enrollments = new ArrayList<>();
-
-		course.addSection(this);
-		faculty.addSection(this);
 	}
 
 	public int getId() {
@@ -44,13 +50,10 @@ public class Section implements Entity {
 		return year;
 	}
 
-	public void addEnroll(Enroll enroll) {
-		enrollments.add(enroll);
-	}
-
 	@Override
 	public String toString() {
-		return "Section [id=" + id + ", course=" + course.getTitle() + ", faculty=" + faculty.getName() + ", year=" + year + "]";
+		return "Section [id=" + id + ", course=" + course.getTitle() + ", faculty=" + faculty.getName() + ", year="
+				+ year + "]";
 	}
 
 	@Override
