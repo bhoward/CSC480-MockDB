@@ -39,11 +39,11 @@ public class Main {
 //		em.dump(System.out);
 
 		Map<Class<? extends Entity>, PrintStream> outputs = new HashMap<>();
-		try (PrintStream course = new PrintStream(new File("course.csv"));
-				PrintStream department = new PrintStream(new File("department.csv"));
-				PrintStream enroll = new PrintStream(new File("enroll.csv"));
-				PrintStream section = new PrintStream(new File("section.csv"));
-				PrintStream student = new PrintStream(new File("student.csv"))) {
+		try (PrintStream course = new PrintStream(new File("/tmp/course.csv"));
+				PrintStream department = new PrintStream(new File("/tmp/department.csv"));
+				PrintStream enroll = new PrintStream(new File("/tmp/enroll.csv"));
+				PrintStream section = new PrintStream(new File("/tmp/section.csv"));
+				PrintStream student = new PrintStream(new File("/tmp/student.csv"))) {
 			outputs.put(Course.class, course);
 			outputs.put(Department.class, department);
 			outputs.put(Enroll.class, enroll);
