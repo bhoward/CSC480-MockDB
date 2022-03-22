@@ -87,4 +87,4 @@ CREATE VIEW QQ (SId, SName, MajorId, GradYear) AS
 SELECT s.SId, s.SName, s.MajorId, s.GradYear FROM STUDENT s
 WHERE s.SID NOT IN (
 SELECT s2.SId FROM STUDENT s2, ENROLL e, SECTION k, course c
-WHERE s2.SId=e.StudentId AND e.SectionId=k.SectiId AND k.CourseId=c.CId AND c.DeptId=s2.MajorId AND e.Grade='A');
+WHERE s2.SId=e.StudentId AND e.SectionId=k.SectId AND k.CourseId=c.CId AND c.DeptId=s2.MajorId AND e.Grade='A');
