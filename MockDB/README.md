@@ -51,3 +51,21 @@ retaken.
 * To graduate, a student needs to pass 15 courses, including all five courses in their major. Both of these
 must be true, and students will remain for as many years as it takes (although the typical time to graduate
 is four years).
+
+## Possible Improvements
+
+* Put a limit on section sizes. Hire more faculty (term positions?), open up more sections, give majors priority on
+registering for their courses.
+
+* Introduce a notion of "popular" majors with more students, and allow faculty sizes to grow in those departments.
+Perhaps "unpopular" majors will eventually be eliminated (as faculty retire and majors disappear)? Have this
+factor in to faculty retirement decisions (more likely to leave if they are the only one left?) and student
+course choices?
+
+* Make grades less random. Some students tend to get better grades than others, at least in their major courses.
+
+* Sciore's design doesn't allow for this, since all students have a graduation year, but what about students who
+drop out? Maybe just allow the year to be NULL until they graduate.
+
+* More realistic/differentiated course offerings? Allow the courses to change over time? Currently, all majors in
+the same year will take all courses together (unless someone fails).
