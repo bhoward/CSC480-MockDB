@@ -81,7 +81,7 @@ CREATE VIEW QN (SId, SName, MajorId, GradYear) AS
 SELECT s.SId, s.SName, s.MajorId, s.GradYear FROM STUDENT s, DEPT d
 WHERE s.MajorId=d.DId AND d.DName='Theatre' AND s.SId NOT IN (
 SELECT e.StudentId FROM ENROLL e, SECTION k, COURSE c, DEPT d2
-WHERE e.SectionId=k.SectiId AND k.CourseId=c.CId AND c.DeptId=d2.DId AND d2.DName='Mathematics');
+WHERE e.SectionId=k.SectId AND k.CourseId=c.CId AND c.DeptId=d2.DId AND d2.DName='Mathematics');
 
 CREATE VIEW QQ (SId, SName, MajorId, GradYear) AS 
 SELECT s.SId, s.SName, s.MajorId, s.GradYear FROM STUDENT s
