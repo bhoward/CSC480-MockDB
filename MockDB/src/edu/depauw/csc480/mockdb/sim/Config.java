@@ -21,10 +21,12 @@ public class Config {
 	public static final int GRADUATION_CREDITS = 15;
 	public static final int GRADUATION_MAJOR_CREDITS = 5;
 
-	public static final int STUDENTS_PER_MAJOR = 20;
-	public static final int FACULTY_PER_MAJOR = 3;
 	public static final int MEAN_FACULTY_YEARS = 30;
+	public static final int PREFERRED_COURSES_PER_FACULTY = 2;
+	public static final int STUDENTS_PER_MAJOR = 20; // TODO depends on number of faculty?
 
+	public static final int MAXIMUM_SECTION_SIZE = 60;
+	
 	/**
 	 * An association of Department names with the simulation year in which they are
 	 * to be created.

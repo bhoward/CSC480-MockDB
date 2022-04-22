@@ -14,8 +14,8 @@ At the moment, here are the assumptions built into the simulation (many of these
 * Everything is organized around the departments, which come into existence at various points
 in the life of the university (currently there is no way to shut down a department...).
 
-* Each department has three faculty members, each of whom can teach any of the department's courses.
-Each teaches two courses per year (no sabbaticals).
+* Each department starts with one faculty member, who can teach any of the department's courses. More
+faculty are hired to cover the estimated demand for courses.
 
 * Faculty members retire according to a Bernoulli process with a given mean (currently 30 years). As
 soon as they retire, a replacement is hired.
@@ -35,7 +35,7 @@ they may not take the senior project course.
 * Majors must start with the "Beginning" course and then take all of the remaining courses in sequence.
 The "Senior Project" course may be taken concurrently with "Special Topics".
 
-* Each course is taught once per year, with an unlimited number of students.
+* Each course is taught at least once per year, with a limited number of students per section (currently 60).
 
 * Each department matriculates a fixed number of new students per year (currently 20).
 

@@ -29,6 +29,8 @@ public class RetireFacultyEvent extends AbstractEvent implements Event {
 		Department department = faculty.getDepartment();
 		department.removeFaculty(faculty);
 
+		// TODO check whether the department needs the replacement...
+		
 		// Hire replacement
 		loop.schedule(new HireFacultyEvent(getTime(), department));
 	}

@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.List;
 
 import edu.depauw.csc480.mockdb.db.EntityManager;
-import edu.depauw.csc480.mockdb.model.Course;
 import edu.depauw.csc480.mockdb.model.Department;
 import edu.depauw.csc480.mockdb.model.Enroll;
 import edu.depauw.csc480.mockdb.model.Section;
@@ -47,8 +46,7 @@ public class RegistrationEvent extends AbstractEvent implements Event {
 		// Choose the next course(s) in the major, if any
 		Department major = student.getMajor();
 		for (Section section : major.getSections()) {
-			Course course = section.getCourse();
-			if (student.canTake(course)) {
+			if (section.canAdd(student)) {
 				schedule.add(section);
 			}
 		}
@@ -66,8 +64,7 @@ public class RegistrationEvent extends AbstractEvent implements Event {
 			}
 
 			for (Section section : department.getSections()) {
-				Course course = section.getCourse();
-				if (student.canTake(course)) {
+				if (section.canAdd(student)) {
 					schedule.add(section);
 					break; // Only choose one from this department
 				}
@@ -80,12 +77,14 @@ public class RegistrationEvent extends AbstractEvent implements Event {
 
 		// Assign grades and create enrollments
 		for (Section section : schedule) {
+			section.enroll(student);
 			String grade = Util.randomGrade(); // TODO get better grades in major courses?
 			em.persist(new Enroll(student, section, grade));
 		}
 
 		// Schedule registration again for next year
-		loop.schedule(new RegistrationEvent(getTime() + 1, student));
+		loop.schedule(new RegistrationEvent(getTime() + 1, student)); // TODO add random noise so students register in
+																		// different order each year
 	}
 
 }

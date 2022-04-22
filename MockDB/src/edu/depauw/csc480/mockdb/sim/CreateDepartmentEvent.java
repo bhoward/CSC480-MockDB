@@ -35,10 +35,8 @@ public class CreateDepartmentEvent extends AbstractEvent implements Event {
 		// Add courses to the catalog
 		Config.createCourses(department, em);
 
-		// Hire some faculty members now
-		for (int i = 0; i < Config.FACULTY_PER_MAJOR; i++) {
-			loop.schedule(new HireFacultyEvent(getTime(), department));
-		}
+		// Hire one faculty member now
+		loop.schedule(new HireFacultyEvent(getTime(), department));
 
 		// Schedule incoming majors each year
 		loop.schedule(new MatriculationEvent(getTime() + 0.25, department, Config.STUDENTS_PER_MAJOR));
