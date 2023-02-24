@@ -28,7 +28,7 @@ public class RegistrationEvent extends AbstractEvent implements Event {
 	 * @param student
 	 */
 	public RegistrationEvent(double time, Student student) {
-		super(time);
+		super(time, Config.REGISTRATION_TIME + Util.randomBoundedGaussian() / 10);
 		this.student = student;
 	}
 
@@ -78,13 +78,12 @@ public class RegistrationEvent extends AbstractEvent implements Event {
 		// Assign grades and create enrollments
 		for (Section section : schedule) {
 			section.enroll(student);
-			String grade = Util.randomGrade(); // TODO get better grades in major courses?
+			String grade = Util.randomGrade(); // TODO get better grades in major courses? each student has an expected GPA? can students fail out?
 			em.persist(new Enroll(student, section, grade));
 		}
 
 		// Schedule registration again for next year
-		loop.schedule(new RegistrationEvent(getTime() + 1, student)); // TODO add random noise so students register in
-																		// different order each year
+		loop.schedule(new RegistrationEvent(getTime() + 1, student));
 	}
 
 }

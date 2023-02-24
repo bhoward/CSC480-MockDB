@@ -11,8 +11,8 @@ import edu.depauw.csc480.mockdb.db.Entity;
  * @author bhoward
  */
 public class Faculty implements Entity {
-	private String name;
-	private Department department;
+	private final String name;
+	private final Department department;
 
 	/**
 	 * Construct a faculty member with the given name and home Department.

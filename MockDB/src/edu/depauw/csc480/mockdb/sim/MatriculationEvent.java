@@ -24,7 +24,7 @@ public class MatriculationEvent extends AbstractEvent implements Event {
 	 * @param numStudents
 	 */
 	public MatriculationEvent(double time, Department department, int numStudents) {
-		super(time);
+		super(time, Config.MATRICULATION_TIME);
 		this.department = department;
 		this.numStudents = numStudents;
 	}
@@ -41,7 +41,7 @@ public class MatriculationEvent extends AbstractEvent implements Event {
 
 			// Schedule this student's registration/graduation
 			// Happens later in the year, after sections are assigned to faculty
-			loop.schedule(new RegistrationEvent(getTime() + 0.5, student));
+			loop.schedule(new RegistrationEvent(getTime(), student));
 		}
 
 		// Schedule more students next year

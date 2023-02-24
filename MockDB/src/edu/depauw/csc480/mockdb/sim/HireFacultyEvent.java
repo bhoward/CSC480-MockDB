@@ -25,7 +25,7 @@ public class HireFacultyEvent extends AbstractEvent implements Event {
 	 * @param department
 	 */
 	public HireFacultyEvent(double time, Department department) {
-		super(time);
+		super(time, Config.HIRE_FACULTY_TIME);
 		this.department = department;
 	}
 

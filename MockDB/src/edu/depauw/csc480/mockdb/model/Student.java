@@ -18,10 +18,11 @@ import edu.depauw.csc480.mockdb.sim.Config;
 public class Student implements Entity {
 	private static int nextId = 1;
 
-	private int id;
-	private String name;
-	private Department major;
+	private final int id;
+	private final String name;
+	private final Department major;
 	private int graduationYear;
+	
 	private int credits;
 	private int majorCredits;
 	private Collection<Course> passedCourses;

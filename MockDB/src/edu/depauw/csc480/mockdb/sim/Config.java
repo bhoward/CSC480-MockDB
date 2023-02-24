@@ -26,7 +26,15 @@ public class Config {
 	public static final int STUDENTS_PER_MAJOR = 20; // TODO depends on number of faculty?
 
 	public static final int MAXIMUM_SECTION_SIZE = 60;
-	
+	public static final int SECTION_SIZE_VARIATION = 20;
+
+	public static final double CREATE_DEPARTMENT_TIME = 0;
+	public static final double RETIRE_FACULTY_TIME = 0.1;
+	public static final double HIRE_FACULTY_TIME = 0.2;
+	public static final double ASSIGN_SECTIONS_TIME = 0.3;
+	public static final double MATRICULATION_TIME = 0.4;
+	public static final double REGISTRATION_TIME = 0.5;
+
 	/**
 	 * An association of Department names with the simulation year in which they are
 	 * to be created.

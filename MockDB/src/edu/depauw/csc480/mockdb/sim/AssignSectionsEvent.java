@@ -32,7 +32,7 @@ public class AssignSectionsEvent extends AbstractEvent implements Event {
 	 * @param department
 	 */
 	public AssignSectionsEvent(double time, Department department) {
-		super(time);
+		super(time, Config.ASSIGN_SECTIONS_TIME);
 		this.department = department;
 	}
 
@@ -103,9 +103,9 @@ public class AssignSectionsEvent extends AbstractEvent implements Event {
 			em.persist(section);
 		}
 		
-		// Add faculty to this department if enough demand
+		// Add faculty to this department next year if enough demand
 		if (needed.size() / faculty.size() > Config.PREFERRED_COURSES_PER_FACULTY) {
-			loop.schedule(new HireFacultyEvent(getTime() + 0.25, department));
+			loop.schedule(new HireFacultyEvent(getTime() + 1, department));
 		}
 
 		// Schedule this again for next year

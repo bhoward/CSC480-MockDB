@@ -28,12 +28,12 @@ public class Department implements Entity {
 		return Collections.unmodifiableList(departments);
 	}
 
-	private int id;
-	private String name;
+	private final int id;
+	private final String name;
 
-	private List<Course> currentCourses;
-	private List<Faculty> currentFaculty;
-	private List<Section> currentSections;
+	private final List<Course> currentCourses;
+	private final List<Faculty> currentFaculty;
+	private final List<Section> currentSections;
 
 	/**
 	 * Construct a Department with the given name. A unique id number is

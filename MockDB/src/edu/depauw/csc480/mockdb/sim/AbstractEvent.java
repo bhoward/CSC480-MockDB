@@ -10,12 +10,13 @@ public abstract class AbstractEvent implements Event {
 	private double time;
 
 	/**
-	 * Construct a simulation event to occur at the given time.
+	 * Construct a simulation event to occur at the given time, adjusted to occur at the specified offset within the given year.
 	 * 
 	 * @param time
+	 * @param offset
 	 */
-	public AbstractEvent(double time) {
-		this.time = time;
+	public AbstractEvent(double time, double offset) {
+		this.time = (int) time + offset;
 	}
 
 	@Override

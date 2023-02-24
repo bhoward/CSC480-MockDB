@@ -14,10 +14,10 @@ import edu.depauw.csc480.mockdb.db.Entity;
 public class Enroll implements Entity {
 	private static int nextId = 1;
 
-	private int id;
-	private Student student;
-	private Section section;
-	private String grade;
+	private final int id;
+	private final Student student;
+	private final Section section;
+	private final String grade;
 
 	/**
 	 * Construct an enrollment record given a Student, Section, and grade ("A"

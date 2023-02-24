@@ -20,7 +20,7 @@ public class RetireFacultyEvent extends AbstractEvent implements Event {
 	 * @param faculty
 	 */
 	public RetireFacultyEvent(double time, Faculty faculty) {
-		super(time);
+		super(time, Config.RETIRE_FACULTY_TIME);
 		this.faculty = faculty;
 	}
 

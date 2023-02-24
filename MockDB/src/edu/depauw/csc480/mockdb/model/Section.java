@@ -4,6 +4,7 @@ import java.io.PrintStream;
 
 import edu.depauw.csc480.mockdb.db.Entity;
 import edu.depauw.csc480.mockdb.sim.Config;
+import edu.depauw.csc480.mockdb.sim.Util;
 
 /**
  * Model object representing a single offering of a course at a university. Each
@@ -15,10 +16,12 @@ import edu.depauw.csc480.mockdb.sim.Config;
 public class Section implements Entity {
 	private static int nextId = 1;
 
-	private int id;
-	private Course course;
-	private Faculty faculty;
-	private int year;
+	private final int id;
+	private final Course course;
+	private final Faculty faculty;
+	private final int year;
+	
+	private final int maxEnrollment;
 	private int enrollment;
 
 	/**
@@ -35,6 +38,7 @@ public class Section implements Entity {
 		this.faculty = faculty;
 		this.year = year;
 
+		this.maxEnrollment = (int) (Config.MAXIMUM_SECTION_SIZE + Config.SECTION_SIZE_VARIATION * (Util.randomBoundedGaussian() - 0.5));
 		this.enrollment = 0;
 	}
 
@@ -74,7 +78,7 @@ public class Section implements Entity {
 	 * @return
 	 */
 	public boolean canAdd(Student student) {
-		return enrollment < Config.MAXIMUM_SECTION_SIZE && student.canTake(course);
+		return enrollment < maxEnrollment && student.canTake(course);
 	}
 
 	/**

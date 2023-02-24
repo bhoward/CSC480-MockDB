@@ -21,11 +21,11 @@ public class Course implements Entity {
 
 	private static int nextId = 1;
 
-	private int id;
-	private String title;
-	private Department department;
-	private int who;
-	private List<Course> prereqs;
+	private final int id;
+	private final String title;
+	private final Department department;
+	private final int who;
+	private final List<Course> prereqs;
 
 	/**
 	 * Construct a Course given a title, Department, eligibility flag, and zero or

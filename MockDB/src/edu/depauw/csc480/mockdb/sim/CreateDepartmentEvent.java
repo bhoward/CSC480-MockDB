@@ -21,7 +21,7 @@ public class CreateDepartmentEvent extends AbstractEvent implements Event {
 	 * @param name
 	 */
 	public CreateDepartmentEvent(int time, String name) {
-		super(time);
+		super(time, Config.CREATE_DEPARTMENT_TIME);
 		this.name = name;
 	}
 
@@ -39,10 +39,10 @@ public class CreateDepartmentEvent extends AbstractEvent implements Event {
 		loop.schedule(new HireFacultyEvent(getTime(), department));
 
 		// Schedule incoming majors each year
-		loop.schedule(new MatriculationEvent(getTime() + 0.25, department, Config.STUDENTS_PER_MAJOR));
+		loop.schedule(new MatriculationEvent(getTime(), department, Config.STUDENTS_PER_MAJOR));
 
 		// Schedule assigning sections each year -- do it in the middle of the year
 		// so the faculty roster will be full
-		loop.schedule(new AssignSectionsEvent(getTime() + 0.5, department));
+		loop.schedule(new AssignSectionsEvent(getTime(), department));
 	}
 }
