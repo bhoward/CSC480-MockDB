@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="University">
+	<entities>
+		<data-source id="derby-1862cfe929a-1e25a5e870c73a0">
+			<entity id="1" name="COURSE" fq-name="APP.COURSE">
+				<path name="APP"/>
+			</entity>
+			<entity id="2" name="DEPT" fq-name="APP.DEPT">
+				<path name="APP"/>
+			</entity>
+			<entity id="3" name="ENROLL" fq-name="APP.ENROLL">
+				<path name="APP"/>
+			</entity>
+			<entity id="4" name="SECTION" fq-name="APP.&quot;SECTION&quot;">
+				<path name="APP"/>
+			</entity>
+			<entity id="5" name="STUDENT" fq-name="APP.STUDENT">
+				<path name="APP"/>
+			</entity>
+		</data-source>
+	</entities>
+	<relations>
+		<relation name="SQL0000000008-c791807d-0186-2f04-5379-000007df2058" fq-name="APP.&quot;SECTION&quot;.&quot;SQL0000000008-c791807d-0186-2f04-5379-000007df2058&quot;" type="fk" pk-ref="1" fk-ref="4"/>
+		<relation name="SQL0000000006-a666c073-0186-2f04-5379-000007df2058" fq-name="APP.COURSE.&quot;SQL0000000006-a666c073-0186-2f04-5379-000007df2058&quot;" type="fk" pk-ref="2" fk-ref="1"/>
+		<relation name="SQL0000000002-0a594127-017f-aa1d-ddbe-000002f16a98" fq-name="APP.STUDENT.&quot;SQL0000000002-0a594127-017f-aa1d-ddbe-000002f16a98&quot;" type="fk" pk-ref="2" fk-ref="5"/>
+		<relation name="SQL0000000011-40f70088-0186-2f04-5379-000007df2058" fq-name="APP.ENROLL.&quot;SQL0000000011-40f70088-0186-2f04-5379-000007df2058&quot;" type="fk" pk-ref="4" fk-ref="3"/>
+		<relation name="SQL0000000010-e8d54087-0186-2f04-5379-000007df2058" fq-name="APP.ENROLL.&quot;SQL0000000010-e8d54087-0186-2f04-5379-000007df2058&quot;" type="fk" pk-ref="5" fk-ref="3"/>
+	</relations>
+</diagram>
