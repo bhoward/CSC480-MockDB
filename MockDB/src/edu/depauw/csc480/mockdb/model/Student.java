@@ -47,8 +47,8 @@ public class Student implements Entity {
 		this.credits = 0;
 		this.majorCredits = 0;
 		this.passedCourses = new HashSet<>();
-		this.gradeSkew = Util.randomBoundedGaussian() - 0.5;
-		this.majorGradeSkew = Util.randomBoundedGaussian();
+		this.gradeSkew = Util.randomBoundedGaussian() * 2 - 1;
+		this.majorGradeSkew = Util.randomBoundedGaussian() * 2;
 	}
 
 	public int getId() {
