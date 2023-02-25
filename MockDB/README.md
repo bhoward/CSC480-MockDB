@@ -35,7 +35,7 @@ they may not take the senior project course.
 * Majors must start with the "Beginning" course and then take all of the remaining courses in sequence.
 The "Senior Project" course may be taken concurrently with "Special Topics".
 
-* Each course is taught at least once per year, with a limited number of students per section (currently 60).
+* Each course is taught at least once per year, with a limited number of students per section (currently 60, plus or minus 20).
 
 * Each department matriculates a fixed number of new students per year (currently 20).
 
@@ -47,6 +47,9 @@ full schedule.
 * Courses are graded on an A through F scale according to a normal distribution (roughly 5% A, 25% B, 40% C,
 25% D, and 5% F in each section). A grade of D or above is required to pass a course. Only a failed course may be
 retaken.
+
+* Each student has a predetermined random amount of "grade skew" between -0.5 and +0.5, plus a "major grade skew"
+between 0 and 1 (units are in terms of std. dev. of the grade distribution).
 
 * To graduate, a student needs to pass 15 courses, including all five courses in their major. Both of these
 must be true, and students will remain for as many years as it takes (although the typical time to graduate
@@ -61,8 +64,6 @@ open up more sections, give majors priority on registering for their courses. Mo
 Perhaps "unpopular" majors will eventually be eliminated (as faculty retire and majors disappear)? Have this
 factor in to faculty retirement decisions (more likely to leave if they are the only one left? overworked?) and
 student course choices?
-
-* Make grades less random. Some students tend to get better grades than others, at least in their major courses.
 
 * Sciore's design doesn't allow for this, since all students have a graduation year, but what about students who
 drop out? Maybe just allow the year to be NULL until they graduate.

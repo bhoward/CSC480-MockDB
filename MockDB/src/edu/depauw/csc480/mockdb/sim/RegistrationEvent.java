@@ -78,7 +78,7 @@ public class RegistrationEvent extends AbstractEvent implements Event {
 		// Assign grades and create enrollments
 		for (Section section : schedule) {
 			section.enroll(student);
-			String grade = Util.randomGrade(); // TODO get better grades in major courses? each student has an expected GPA? can students fail out?
+			String grade = student.skewedGrade(section);
 			em.persist(new Enroll(student, section, grade));
 		}
 
