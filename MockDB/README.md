@@ -69,3 +69,7 @@ drop out? Maybe just allow the year to be NULL until they graduate.
 
 * More realistic/differentiated course offerings? Allow the courses to change over time? Currently, all majors in
 the same year will take all courses together (unless someone fails).
+
+## Bugs!
+
+* A student can sign up for multiple sections of the same course in a single semester! Check out Joe Everett.
