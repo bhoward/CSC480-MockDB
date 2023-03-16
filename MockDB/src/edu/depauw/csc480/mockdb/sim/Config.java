@@ -26,7 +26,7 @@ public class Config {
 	public static final int STUDENTS_PER_MAJOR = 20; // TODO depends on number of faculty?
 
 	public static final int MAXIMUM_SECTION_SIZE = 60;
-	public static final int SECTION_SIZE_VARIATION = 20;
+	public static final int SECTION_SIZE_VARIATION = 50;
 
 	public static final double CREATE_DEPARTMENT_TIME = 0;
 	public static final double RETIRE_FACULTY_TIME = 0.1;

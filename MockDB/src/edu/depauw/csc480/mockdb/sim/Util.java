@@ -349,10 +349,11 @@ public class Util {
 	/**
 	 * Compute a random grade according to a classic "Bell curve" grading scheme.
 	 * 
+	 * @param skew amount to add to shift the grade according to a student's "innate ability"
 	 * @return a grade "A" through "F"
 	 */
-	public static String randomGrade() {
-		double score = rng.nextGaussian();
+	public static String randomGrade(double skew) {
+		double score = rng.nextGaussian() + skew;
 		if (score >= 1.5) {
 			return "A";
 		} else if (score >= 0.5) {

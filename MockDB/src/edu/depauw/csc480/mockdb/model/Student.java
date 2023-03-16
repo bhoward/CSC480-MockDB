@@ -6,6 +6,7 @@ import java.util.HashSet;
 
 import edu.depauw.csc480.mockdb.db.Entity;
 import edu.depauw.csc480.mockdb.sim.Config;
+import edu.depauw.csc480.mockdb.sim.Util;
 
 /**
  * Model object representing a student at a university. Each student has a name
@@ -26,6 +27,8 @@ public class Student implements Entity {
 	private int credits;
 	private int majorCredits;
 	private Collection<Course> passedCourses;
+	private double gradeSkew;
+	private double majorGradeSkew;
 
 	/**
 	 * Construct a Student with the given name, major Department, and expected
@@ -44,6 +47,8 @@ public class Student implements Entity {
 		this.credits = 0;
 		this.majorCredits = 0;
 		this.passedCourses = new HashSet<>();
+		this.gradeSkew = Util.randomBoundedGaussian() * 2 - 1;
+		this.majorGradeSkew = Util.randomBoundedGaussian() * 2;
 	}
 
 	public int getId() {
@@ -85,6 +90,14 @@ public class Student implements Entity {
 			if (course.getDepartment().equals(major)) {
 				majorCredits++;
 			}
+		}
+	}
+	
+	public String skewedGrade(Section section) {
+		if (section.getCourse().getDepartment().equals(major)) {
+			return Util.randomGrade(majorGradeSkew);
+		} else {
+			return Util.randomGrade(gradeSkew);
 		}
 	}
 
